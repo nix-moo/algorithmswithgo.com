@@ -21,13 +21,15 @@ func TestFactor(t *testing.T) {
 		{tenPrimes, 4, []int{2, 2}},
 	}
 	for _, tc := range tests {
-		t.Run(fmt.Sprintf("%v with primes %v", tc.number, tc.primes), func(t *testing.T) {
-			got := Factor(tc.primes, tc.number)
-			sort.Ints(got)
-			sort.Ints(tc.want)
-			if err := intSlicesEqual(got, tc.want); err != nil {
-				t.Fatalf("Factor() sorted = %v; want %v; err = %v", got, tc.want, err)
-			}
+		t.Run(
+			fmt.Sprintf("%v with primes %v", tc.number, tc.primes), 
+			func(t *testing.T) {
+				got := Factor(tc.primes, tc.number)
+				sort.Ints(got)
+				sort.Ints(tc.want)
+				if err := intSlicesEqual(got, tc.want); err != nil {
+					t.Fatalf("Factor() sorted = %v; want %v; err = %v", got, tc.want, err)
+				}
 		})
 	}
 }
